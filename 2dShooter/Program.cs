@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _2dShooter
+namespace BattleRoyal2d
 {
 #if WINDOWS || LINUX
     /// <summary>
@@ -14,7 +14,7 @@ namespace _2dShooter
         [STAThread]
         static void Main()
         {
-            using (var game = new Game1())
+            using (var game = new ShooterGame())
                 game.Run();
         }
     }

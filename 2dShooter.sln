@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2dShooter", "2dShooter\2dShooter.csproj", "{864E7DD2-0C05-4FF1-ADB0-CBEB5589D4E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleRoyale2d", "2dShooter\BattleRoyale2d.csproj", "{864E7DD2-0C05-4FF1-ADB0-CBEB5589D4E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

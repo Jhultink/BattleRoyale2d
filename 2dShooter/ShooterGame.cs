@@ -1,21 +1,29 @@
-﻿using Microsoft.Xna.Framework;
+﻿using BattleRoyal2d.Entities;
+using BattleRoyal2d.Entities.Player_Controllers;
+using BattleRoyale2d.World;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace _2dShooter
+namespace BattleRoyal2d
 {
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : Game
+    public class ShooterGame : Game
     {
+        public static PlayerEntity Player;
+        public static Camera Camera;
+        public static Map Map;
+
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        public Game1()
+        public ShooterGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            this.IsMouseVisible = true;
         }
 
         /// <summary>
@@ -26,7 +34,9 @@ namespace _2dShooter
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            Player = new PlayerEntity(new MainPlayerController());
+            Camera = new Camera(GraphicsDevice.Viewport);
+            Map = new Map();
 
             base.Initialize();
         }
@@ -37,10 +47,10 @@ namespace _2dShooter
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            Player.Load(Content);
+            Map.Load(Content);
         }
 
         /// <summary>
@@ -49,7 +59,6 @@ namespace _2dShooter
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
         }
 
         /// <summary>
@@ -59,12 +68,10 @@ namespace _2dShooter
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
-
-            // TODO: Add your update logic here
-
             base.Update(gameTime);
+
+            Player.Update(gameTime);
+            Camera.Update(Player.Position);
         }
 
         /// <summary>
@@ -73,9 +80,17 @@ namespace _2dShooter
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.Transform);
+
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+
+            Player.Draw(spriteBatch);
+
+            Map.Draw(spriteBatch);
+
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }
