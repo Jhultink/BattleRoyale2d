@@ -12,6 +12,7 @@ namespace BattleRoyale2d.World
     {
         public Matrix Transform { get; private set; }
 
+
         private Viewport viewport;
         public float Zoom = 1f;
 

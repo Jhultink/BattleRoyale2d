@@ -3,21 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BattleRoyale2d.World;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace BattleRoyal2d.Entities.Player_Controllers
 {
     public class MainPlayerController : IPlayerController
     {
+        private Vector2 position = new Vector2(0, 0);
         private float maxSpeed = 5.0f;
+
+        public float GetRotation()
+        {
+            var mouse = Mouse.GetState();
+            var x = mouse.Position;
+
+            var angVec = ShooterGame..Center - mouse.Position.ToVector2();
+            angVec.Normalize();
+
+            return (float)Math.Atan2(angVec.X, -angVec.Y);
+        }
 
         public Vector2 GetStartingPosition()
         {
-            return new Vector2(0, 0);
+            return position;
         }
 
-        public Vector2 GetVelocity()
+        public Vector2 GetPosition()
         {
             var vel = new Vector2(0, 0);
 

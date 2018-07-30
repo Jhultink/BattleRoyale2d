@@ -1,5 +1,6 @@
 ﻿using BattleRoyal2d.Entities;
 using BattleRoyal2d.Entities.Player_Controllers;
+using BattleRoyale2d.Items.Weapons;
 using BattleRoyale2d.World;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -15,6 +16,8 @@ namespace BattleRoyal2d
         public static PlayerEntity Player;
         public static Camera Camera;
         public static Map Map;
+
+        public Weapon weapon;
 
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -35,6 +38,10 @@ namespace BattleRoyal2d
         protected override void Initialize()
         {
             Player = new PlayerEntity(new MainPlayerController());
+            weapon = new AR();
+
+            Player.Weapon = weapon;
+
             Camera = new Camera(GraphicsDevice.Viewport);
             Map = new Map();
 
@@ -51,6 +58,7 @@ namespace BattleRoyal2d
 
             Player.Load(Content);
             Map.Load(Content);
+            weapon.Load(Content);
         }
 
         /// <summary>
@@ -82,7 +90,7 @@ namespace BattleRoyal2d
         {
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.Transform);
 
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.DarkOliveGreen);
 
 
             Player.Draw(spriteBatch);

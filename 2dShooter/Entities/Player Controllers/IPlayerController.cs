@@ -7,5 +7,7 @@ namespace BattleRoyal2d.Entities
         Vector2 GetStartingPosition();
 
         Vector2 GetVelocity();
+
+        float GetRotation();
     }
 }

@@ -22,7 +22,7 @@ namespace BattleRoyale2d.World
         public Map(int seed = 0)
         {
             Random random = new Random(seed);
-            int bushesCnt = 500;
+            int bushesCnt = 100;
 
             for (int i = 0; i < bushesCnt; i++)
             {

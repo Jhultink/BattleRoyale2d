@@ -24,7 +24,7 @@ namespace BattleRoyal2d.Entities
 
         public int Height { get; set; }
 
-        public Vector2 Position { get; protected set; }
+        public Vector2 Position { get; set; }
 
         public Rectangle Bounds { get { return new Rectangle((int)Position.X, (int)Position.Y, Width, Height); } }
 

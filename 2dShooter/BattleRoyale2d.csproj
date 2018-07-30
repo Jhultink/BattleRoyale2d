@@ -46,6 +46,8 @@
     <Compile Include="Entities\Player Controllers\IPlayerController.cs" />
     <Compile Include="Entities\Player Controllers\MainPlayerController.cs" />
     <Compile Include="Entities\PlayerEntity.cs" />
+    <Compile Include="Items\Weapons\AR.cs" />
+    <Compile Include="Items\Weapons\Weapon.cs" />
     <Compile Include="ShooterGame.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
