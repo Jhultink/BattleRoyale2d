@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,13 +18,14 @@ namespace BattleRoyal2d.Entities.Player_Controllers
 
         public float GetRotation()
         {
-            var mouse = Mouse.GetState();
-            var x = mouse.Position;
+            var mouse = Mouse.GetState().Position;
+            var camera = ShooterGame.Camera.Bounds.Center;
 
-            var angVec = ShooterGame..Center - mouse.Position.ToVector2();
-            angVec.Normalize();
+            var vector = (camera - mouse).ToVector2();
 
-            return (float)Math.Atan2(angVec.X, -angVec.Y);
+            float ang = (float)Math.Atan2(vector.X, -vector.Y);
+
+            return ang;
         }
 
         public Vector2 GetStartingPosition()
@@ -31,7 +33,7 @@ namespace BattleRoyal2d.Entities.Player_Controllers
             return position;
         }
 
-        public Vector2 GetPosition()
+        public Vector2 GetVelocity()
         {
             var vel = new Vector2(0, 0);
 
